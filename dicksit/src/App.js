@@ -3,6 +3,21 @@ import './App.css';
 import Header from './components/Header';
 import Scoreboard from './components/Scoreboard';
 
+const scores = [
+  {
+    name: 'Bella',
+    points: 1,
+  },
+  {
+    name: 'Márk',
+    points: 4,
+  },
+  {
+    name: 'Balázs',
+    points: 3,
+  },
+];
+
 function App() {
   return (
     <div className="App">
@@ -11,7 +26,7 @@ function App() {
       </div>
       <div className="game-area">GameArea</div>
       <div className="scoreboard">
-        <Scoreboard />
+        <Scoreboard scores={scores} />
       </div>
       <div className="hand">Hand</div>
     </div>

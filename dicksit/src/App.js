@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Scoreboard from './components/Scoreboard';
+import Hand from './components/Hand';
 
 const scores = [
   {
@@ -28,7 +29,9 @@ function App() {
       <div className="scoreboard">
         <Scoreboard scores={scores} />
       </div>
-      <div className="hand">Hand</div>
+      <div className="hand">
+        <Hand />
+      </div>
     </div>
   );
 }

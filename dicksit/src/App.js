@@ -19,6 +19,15 @@ const scores = [
   },
 ];
 
+const cards = [
+  { id: '1.png' },
+  { id: '2.png' },
+  { id: '3.png' },
+  { id: '4.png' },
+  { id: '5.png' },
+  { id: '6.png' },
+];
+
 function App() {
   return (
     <div className="App">
@@ -30,7 +39,7 @@ function App() {
         <Scoreboard scores={scores} />
       </div>
       <div className="hand">
-        <Hand />
+        <Hand cards={cards} />
       </div>
     </div>
   );

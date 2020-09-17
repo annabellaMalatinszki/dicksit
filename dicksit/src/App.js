@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
+import Scoreboard from './components/Scoreboard';
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
         <Header name="Bella"></Header>
       </div>
       <div className="game-area">GameArea</div>
-      <div className="scoreboard">Scoreboard</div>
+      <div className="scoreboard">
+        <Scoreboard />
+      </div>
       <div className="hand">Hand</div>
     </div>
   );

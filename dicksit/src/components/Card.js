@@ -9,7 +9,7 @@ const Card = ({ cardName }) => {
           <CardMedia
             component="img"
             alt={cardName}
-            image={`${process.env.PUBLIC_URL}pics/${cardname}`}
+            image={`${process.env.PUBLIC_URL}pics/${cardName}`}
             title={cardName}
           ></CardMedia>
         </CardActionArea>

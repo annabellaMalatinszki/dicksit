@@ -35,7 +35,7 @@ function App() {
         <Header name="Bella"></Header>
       </div>
       <div className="game-area">GameArea</div>
-      <div className="scoreboard">
+      <div className="side-bar">
         <SideBar scores={scores} />
       </div>
       <div className="hand">

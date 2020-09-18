@@ -16,7 +16,7 @@
   padding: 2em;
 }
 
-.scoreboard {
+.side-bar {
   grid-column: 2 / 3;
   background: lightcyan;
   padding: 2em;

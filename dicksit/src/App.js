@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header';
-import Scoreboard from './components/Scoreboard';
+import SideBar from './components/SideBar';
 import Hand from './components/Hand';
 
 const scores = [
@@ -36,7 +36,7 @@ function App() {
       </div>
       <div className="game-area">GameArea</div>
       <div className="scoreboard">
-        <Scoreboard scores={scores} />
+        <SideBar scores={scores} />
       </div>
       <div className="hand">
         <Hand cards={cards} />

@@ -29,6 +29,15 @@ const userCards = [
   { id: '6.png' },
 ];
 
+const gameAreaCards = [
+  { id: '7.png' },
+  { id: '8.png' },
+  { id: '9.png' },
+  { id: '10.png' },
+  { id: '11.png' },
+  { id: '12.png' },
+];
+
 function App() {
   return (
     <div className="App">
@@ -36,7 +45,7 @@ function App() {
         <Header name="Bella"></Header>
       </div>
       <div className="game-area">
-        <GameArea />
+        <GameArea cards={gameAreaCards} />
       </div>
       <div className="side-bar">
         <SideBar scores={scores} />

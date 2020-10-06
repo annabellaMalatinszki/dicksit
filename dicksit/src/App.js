@@ -20,7 +20,7 @@ const scores = [
   },
 ];
 
-const cards = [
+const userCards = [
   { id: '1.png' },
   { id: '2.png' },
   { id: '3.png' },
@@ -42,7 +42,7 @@ function App() {
         <SideBar scores={scores} />
       </div>
       <div className="hand">
-        <Hand cards={cards} />
+        <Hand cards={userCards} />
       </div>
     </div>
   );

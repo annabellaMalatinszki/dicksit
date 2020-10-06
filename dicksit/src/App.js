@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import Hand from './components/Hand';
+import GameArea from './components/GameArea';
 
 const scores = [
   {
@@ -34,7 +35,9 @@ function App() {
       <div className="header">
         <Header name="Bella"></Header>
       </div>
-      <div className="game-area">GameArea</div>
+      <div className="game-area">
+        <GameArea />
+      </div>
       <div className="side-bar">
         <SideBar scores={scores} />
       </div>

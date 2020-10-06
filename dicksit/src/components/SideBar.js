@@ -1,7 +1,7 @@
 import React from 'react';
 import Scoreboard from './Scoreboard';
 import { Button, Backdrop, Typography, Paper } from '@material-ui/core';
-import { makeStyle, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle = makeStyles({
   root: {

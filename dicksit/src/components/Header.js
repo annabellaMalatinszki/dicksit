@@ -34,7 +34,7 @@ const Header = (props) => {
           >
             <AccountCircle />
           </IconButton>
-          <Typography variant="p">{props.name}</Typography>
+          <Typography variant="body1">{props.name}</Typography>
           <IconButton edge="end" aria-label="Menu">
             <MenuIcon />
           </IconButton>

@@ -6,13 +6,11 @@
 
 .header {
   grid-column: 1 / 3;
-  background: lightblue;
   padding: 2em;
 }
 
 .game-area {
   grid-column: 1 / 2;
-  background: lightgreen;
   padding: 2em;
 }
 
@@ -25,6 +23,5 @@
 .hand {
   grid-column: 1/ 3;
   background: lightseagreen;
-  padding: 2em;
-
+  padding: 1em;
 }

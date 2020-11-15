@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/init', (req, res) => {
+  // TODO This is not right, the userCards property return the first element of the array, because this here is everyone's hand,
+  // and it shouldn't be sent to everyone. Each should get their own hand only.
   res.send({scores: mockdata.scores, userCards: cardHandler.dealHand(deck, 1)[0], gameAreaCards: mockdata.gameAreaCards});
 })
 

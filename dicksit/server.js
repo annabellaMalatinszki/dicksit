@@ -13,6 +13,11 @@ const deck = mockdata.userCards;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.post('/api/gameinfo', (req, res) => {
+  const game = req.body;
+  console.log(game);
+  res.send({ code: 'XY4C' });
+});
 app.get('/api/init', (req, res) => {
   // TODO This is not right, the userCards property return the first element of the array, because this here is everyone's hand,
   // and it shouldn't be sent to everyone. Each should get their own hand only.

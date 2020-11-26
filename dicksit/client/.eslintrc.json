@@ -5,8 +5,11 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "react-app",
+        "airbnb",
+        "plugin:jsx-a11y/recommended",
+        "prettier",
+        "prettier/react"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -15,7 +18,9 @@
         "ecmaVersion": 12
     },
     "plugins": [
-        "react"
+        "react",
+        "jsx-a11y",
+        "prettier"
     ],
     "rules": {
     }

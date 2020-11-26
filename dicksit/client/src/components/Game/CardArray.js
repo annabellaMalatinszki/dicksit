@@ -18,11 +18,7 @@ const CardArray = ({ cards }) => {
     <div className={classes.root}>
       {cards.map((card) => {
         return (
-          <Card
-            cardName={card.id}
-            key={card.id}
-            className={classes.card}
-          ></Card>
+          <Card cardName={card.id} key={card.id} className={classes.card} />
         );
       })}
     </div>

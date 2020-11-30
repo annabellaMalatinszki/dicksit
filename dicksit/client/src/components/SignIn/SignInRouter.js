@@ -1,5 +1,4 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import SignIn from './SignIn';
 import HostRouter from './Host/HostRouter';
 import PlayerRouter from './Player/PlayerRouter';
@@ -25,7 +24,17 @@ const useStyle = makeStyles({
 });
 
 const SignInRouter = () => {
+  const [signInStatus, setSignInStatus] = useState('signin');
   const classes = useStyle();
+
+  let componentToRender;
+  if (signInStatus === 'signin') {
+    componentToRender = <SignIn setSignInStatus={setSignInStatus} />;
+  } else if (signInStatus === 'host') {
+    componentToRender = <HostRouter setSignInStatus={setSignInStatus} />;
+  } else if (signInStatus === 'player') {
+    componentToRender = <PlayerRouter setSignInStatus={setSignInStatus} />;
+  }
 
   return (
     <Grid container className={`${classes.root} ${classes.center}`}>
@@ -33,11 +42,7 @@ const SignInRouter = () => {
         <Typography variant="h3" className={classes.center}>
           Dicksit
         </Typography>
-        <div>
-          <Route exact path="/" component={SignIn} />
-          <Route exact path="/host" component={HostRouter} />
-          <Route exact path="/player" component={PlayerRouter} />
-        </div>
+        <div>{componentToRender}</div>
       </Paper>
     </Grid>
   );

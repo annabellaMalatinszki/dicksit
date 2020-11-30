@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Game from './components/Game/Game';
-import SignInRouter from './components/SingIn/SignInRouter';
+import SignInRouter from './components/SignIn/SignInRouter';
 
 class App extends React.Component {
   render() {

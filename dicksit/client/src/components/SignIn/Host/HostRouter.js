@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import HostForm from './HostForm';
 import HostWait from './HostWait';
 
-const HostRouter = () => {
+const HostRouter = ({ setSignInStatus }) => {
   const [code, setCode] = useState();
 
   return (
     <div>
-      {code ? <HostWait code={code} /> : <HostForm setCode={setCode} />}
+      {code ? (
+        <HostWait code={code} />
+      ) : (
+        <HostForm setCode={setCode} setSignInStatus={setSignInStatus} />
+      )}
     </div>
   );
 };

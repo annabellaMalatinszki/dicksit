@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BunnyArray from '../BunnyArray';
+import BackButton from '../BackButton';
 
 const requestHelper = require('../../../requestHelper.js');
 
@@ -33,19 +34,21 @@ const useStyle = makeStyles({
   slider: {
     width: '15vw',
   },
-  nextButton: {
-    margin: '2vh',
+  arrowButtons: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
   },
 });
 
-const HostForm = ({ setCode }) => {
+const HostForm = ({ setCode, setSignInStatus }) => {
   const [name, setName] = useState();
   const [numOfPlayers, setNumOfPlayers] = useState(4);
   const [selectedBunny, setSelectedBunny] = useState('');
 
   const classes = useStyle();
 
-  const handleClick = () => {
+  const handleClick = ({ setSignInStatus }) => {
     requestHelper
       .postGameInfo({
         name,
@@ -90,15 +93,12 @@ const HostForm = ({ setCode }) => {
             selectedBunny={selectedBunny}
           />
         </div>
-        <Button
-          className={classes.nextButton}
-          variant="contained"
-          onClick={handleClick}
-        >
-          {/* <Link to="/code"> */}
-          <Typography variant="h6">Next</Typography>
-          {/* </Link> */}
-        </Button>
+        <div className={classes.arrowButtons}>
+          <BackButton setSignInStatus={setSignInStatus} />
+          <Button onClick={handleClick}>
+            <ArrowForwardIcon />
+          </Button>
+        </div>
       </form>
     </div>
   );

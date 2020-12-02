@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserName, setUserColor, setNumOfPlayers } from '../../../actions';
+import {
+  setUserName,
+  setUserColor,
+  setNumOfPlayers,
+  signIn,
+} from '../../../actions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -58,6 +63,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
     })
       .then((res) => {
         setCode(res.code);
+        dispatch(signIn());
       })
       .catch((err) => console.log(err));
   };

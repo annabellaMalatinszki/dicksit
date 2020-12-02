@@ -4,8 +4,7 @@ import Header from './Header';
 import SideBar from './SideBar';
 import Hand from './Hand';
 import GameArea from './GameArea';
-
-const requestHelper = require('../../requestHelper.js');
+import { callApi } from '../../requestHelper';
 
 class Game extends React.Component {
   state = {
@@ -15,8 +14,7 @@ class Game extends React.Component {
   };
 
   componentDidMount() {
-    requestHelper
-      .callApi('init')
+    callApi('init')
       .then((res) => {
         this.setState({
           scores: res.scores,

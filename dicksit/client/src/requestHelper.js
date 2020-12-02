@@ -1,4 +1,4 @@
-const callApi = async (dest) => {
+export const callApi = async (dest) => {
   const response = await fetch(`/api/${dest}`);
   const body = await response.json();
 
@@ -9,9 +9,7 @@ const callApi = async (dest) => {
   return body;
 };
 
-exports.callApi = callApi;
-
-const postGameInfo = async (info) => {
+export const postGameInfo = async (info) => {
   const response = await fetch('/api/gameinfo', {
     method: 'post',
     headers: {
@@ -30,5 +28,3 @@ const postGameInfo = async (info) => {
 
   return body;
 };
-
-exports.postGameInfo = postGameInfo;

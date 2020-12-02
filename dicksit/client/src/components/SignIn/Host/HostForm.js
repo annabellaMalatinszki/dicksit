@@ -9,8 +9,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BunnyArray from '../BunnyArray';
 import BackButton from '../BackButton';
-
-const requestHelper = require('../../../requestHelper.js');
+import { postGameInfo } from '../../../requestHelper';
 
 // TODO: This should not be here
 const bunnies = [
@@ -52,8 +51,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
   const classes = useStyle();
 
   const handleClick = ({ setSignInStatus }) => {
-    requestHelper
-      .postGameInfo({
+    postGameInfo({
         userName,
         numOfPlayers,
         selectedBunny,

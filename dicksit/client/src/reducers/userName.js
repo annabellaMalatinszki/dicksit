@@ -1,9 +1,9 @@
-const userNameReducer = (state: '', action) => {
+const userNameReducer = (state: 'Anonymous', action) => {
   switch (action.type) {
     case 'SETNAME':
       return action.payload;
     default:
-      return 'Anonymus';
+      return state;
   }
 };
 

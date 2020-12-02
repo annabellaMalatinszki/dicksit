@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUserName } from '../../../actions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -42,7 +44,8 @@ const useStyle = makeStyles({
 });
 
 const HostForm = ({ setCode, setSignInStatus }) => {
-  const [name, setName] = useState();
+  const userName = useSelector((state) => state.userName);
+  const dispatch = useDispatch();
   const [numOfPlayers, setNumOfPlayers] = useState(4);
   const [selectedBunny, setSelectedBunny] = useState('');
 
@@ -51,7 +54,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
   const handleClick = ({ setSignInStatus }) => {
     requestHelper
       .postGameInfo({
-        name,
+        userName,
         numOfPlayers,
         selectedBunny,
       })
@@ -68,7 +71,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
           className={classes.nameInput}
           label="Name"
           onChange={(e) => {
-            setName(e.target.value);
+            dispatch(setUserName(e.target.value));
           }}
         ></TextField>
         <Typography id="num-of-players-slider" gutterBottom>

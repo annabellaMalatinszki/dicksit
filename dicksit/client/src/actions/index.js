@@ -12,6 +12,12 @@ export const setUserColor = (color) => {
   };
 };
 
+export const signIn = () => {
+  return {
+    type: 'SIGNED_IN',
+  };
+};
+
 export const setNumOfPlayers = (numOfPlayers) => {
   return {
     type: 'SETNUMOFPLAYERS',

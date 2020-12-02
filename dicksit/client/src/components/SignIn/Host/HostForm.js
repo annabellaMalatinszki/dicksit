@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserName } from '../../../actions';
+import { setUserName, setUserColor } from '../../../actions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -43,19 +43,19 @@ const useStyle = makeStyles({
 });
 
 const HostForm = ({ setCode, setSignInStatus }) => {
-  const userName = useSelector((state) => state.userName);
   const dispatch = useDispatch();
+  const userName = useSelector((state) => state.userName);
+  const userColor = useSelector((state) => state.userColor);
   const [numOfPlayers, setNumOfPlayers] = useState(4);
-  const [selectedBunny, setSelectedBunny] = useState('');
 
   const classes = useStyle();
 
   const handleClick = ({ setSignInStatus }) => {
     postGameInfo({
-        userName,
-        numOfPlayers,
-        selectedBunny,
-      })
+      userName,
+      numOfPlayers,
+      userColor,
+    })
       .then((res) => {
         setCode(res.code);
       })
@@ -90,8 +90,10 @@ const HostForm = ({ setCode, setSignInStatus }) => {
         <div>
           <BunnyArray
             bunnies={bunnies.slice(0, numOfPlayers)}
-            setSelectedBunny={setSelectedBunny}
-            selectedBunny={selectedBunny}
+            setSelectedBunny={(color) => {
+              dispatch(setUserColor(color));
+            }}
+            selectedBunny={userColor}
           />
         </div>
         <div className={classes.arrowButtons}>

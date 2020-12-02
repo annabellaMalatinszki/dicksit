@@ -4,3 +4,10 @@ export const setUserName = (name) => {
     payload: name,
   };
 };
+
+export const setUserColor = (color) => {
+  return {
+    type: 'SETCOLOR',
+    payload: color,
+  };
+};

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserName, setUserColor } from '../../../actions';
+import { setUserName, setUserColor, setNumOfPlayers } from '../../../actions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -46,7 +46,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.userName);
   const userColor = useSelector((state) => state.userColor);
-  const [numOfPlayers, setNumOfPlayers] = useState(4);
+  const numOfPlayers = useSelector((state) => state.numOfPlayers);
 
   const classes = useStyle();
 
@@ -82,7 +82,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
           step={1}
           max={12}
           onChange={(e, value) => {
-            setNumOfPlayers(value);
+            dispatch(setNumOfPlayers(value));
           }}
           valueLabelDisplay="auto"
           aria-labelledby="num-of-players-slider"

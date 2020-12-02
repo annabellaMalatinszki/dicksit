@@ -11,3 +11,10 @@ export const setUserColor = (color) => {
     payload: color,
   };
 };
+
+export const setNumOfPlayers = (numOfPlayers) => {
+  return {
+    type: 'SETNUMOFPLAYERS',
+    payload: numOfPlayers,
+  };
+};

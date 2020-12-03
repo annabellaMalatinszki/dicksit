@@ -1,21 +1,22 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Game from './components/Game/Game';
 import SignInRouter from './components/SignIn/SignInRouter';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <div>
-          <Switch>
-            <Route exact path="/" component={SignInRouter}></Route>
-            <Route path="/game" component={Game} />
-          </Switch>
-        </div>
+const App = () => {
+  const isSignedIn = useSelector((state) => state.isSignedIn);
+
+  return (
+    <div className="App">
+      <div>
+        <Route exact path="/">
+          {isSignedIn ? <Redirect to="/game" /> : <SignInRouter />}
+        </Route>
+        <Route path="/game" component={Game} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

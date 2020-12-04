@@ -58,7 +58,6 @@ const HostForm = ({ setCode, setSignInStatus }) => {
     })
       .then((res) => {
         setCode(res.code);
-        dispatch(signIn());
       })
       .catch((err) => console.log(err));
   };

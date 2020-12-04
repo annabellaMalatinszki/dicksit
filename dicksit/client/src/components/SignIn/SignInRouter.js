@@ -9,7 +9,8 @@ import Grid from '@material-ui/core/Grid';
 
 const useStyle = makeStyles({
   root: {
-    height: '100vh',
+    minHeight: '100vh',
+    height: 'auto',
     backgroundColor: 'rgba(230, 230, 250, 1)',
   },
   center: {
@@ -20,7 +21,7 @@ const useStyle = makeStyles({
   signIn: {
     height: 'auto',
     width: 'auto',
-    padding: '3%',
+    padding: '1% 3%',
   },
 });
 

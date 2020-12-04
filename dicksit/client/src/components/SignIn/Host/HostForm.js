@@ -18,18 +18,18 @@ import { postGameInfo } from '../../../requestHelper';
 
 // TODO: This should not be here
 const bunnies = [
-  { color: 'blue' },
-  { color: 'red' },
-  { color: 'pink' },
-  { color: 'yellow' },
-  { color: 'orange' },
-  { color: 'green' },
-  { color: 'brown' },
-  { color: 'purple' },
-  { color: 'lime' },
-  { color: 'grey' },
-  { color: 'aqua' },
-  { color: 'black' },
+  { color: 'blue', name: '' },
+  { color: 'red', name: '' },
+  { color: 'pink', name: '' },
+  { color: 'yellow', name: '' },
+  { color: 'orange', name: '' },
+  { color: 'green', name: '' },
+  { color: 'brown', name: '' },
+  { color: 'purple', name: '' },
+  { color: 'lime', name: '' },
+  { color: 'salmon', name: '' },
+  { color: 'aqua', name: '' },
+  { color: 'black', name: '' },
 ];
 
 const useStyle = makeStyles({

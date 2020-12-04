@@ -18,8 +18,9 @@ const useStyle = makeStyles({
     textAlign: 'center',
   },
   signIn: {
-    height: '40vh',
-    width: '24vw',
+    height: 'auto',
+    width: 'auto',
+    padding: '3%',
   },
 });
 

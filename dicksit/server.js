@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mockdata = require('./mockdata.js');
 const cardHandler = require('./cardHandler.js');
+const helper = require('./helper.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/api/gameinfo', (req, res) => {
   const game = req.body;
-  console.log(game);
-  res.send({ code: 'XY4C' });
+  const code = helper.generateCode();
+  res.send({ code });
 });
 
 app.get('/api/init', (req, res) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mockdata = require('./mockdata.js');
 const cardHandler = require('./cardHandler.js');
-const helper = require('./helper.js');
+const helper = require('./util.js');
 
 const app = express();
 const port = process.env.PORT || 5000;

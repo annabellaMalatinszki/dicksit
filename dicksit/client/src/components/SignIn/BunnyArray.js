@@ -14,26 +14,22 @@ const useStyle = makeStyles({
   },
 });
 
-const BunnyArray = ({ bunnies, selectedBunny, setSelectedBunny }) => {
+const BunnyArray = ({ bunnies, selectedBunny, setSelectedBunny, isWait }) => {
   const classes = useStyle();
 
   return (
-    <div className={classes.root}>
+    <div className={isWait ? '' : classes.root}>
       {bunnies.map((bunny) => {
         return (
-          // <div
-          //   onClick={() => {
-          //     setSelectedBunny(bunny.color);
-          //   }}
-          // >
           <Bunny
             bunnyColor={bunny.color}
+            playerName={bunny.name}
             key={bunny.color}
             className={classes.bunny}
             setSelectedBunny={setSelectedBunny}
             isSelected={selectedBunny === bunny.color ? true : false}
+            isWait={isWait}
           />
-          // </div>
         );
       })}
     </div>

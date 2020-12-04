@@ -3,6 +3,12 @@ import { CardMedia, CardActionArea, Card as MUICard } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle = makeStyles({
+  root: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'flex-start',
+    marginLeft: '1vw',
+  },
   bunny: {
     width: '50px',
     margin: '5px',
@@ -21,11 +27,21 @@ const useStyle = makeStyles({
   },
 });
 
-const Bunny = ({ bunnyColor, isSelected, setSelectedBunny }) => {
+const Bunny = ({
+  bunnyColor,
+  isSelected,
+  setSelectedBunny,
+  playerName,
+  isWait,
+}) => {
   const classes = useStyle();
 
+  const handleClick = () => {
+    if (!isWait) setSelectedBunny(bunnyColor);
+  };
+
   return (
-    <div>
+    <div className={isWait ? classes.root : ''}>
       <MUICard
         className={`${classes.bunny} ${isSelected ? classes.selected : null}`}
       >
@@ -36,11 +52,12 @@ const Bunny = ({ bunnyColor, isSelected, setSelectedBunny }) => {
             image={`${process.env.PUBLIC_URL}pics/bunny_${bunnyColor}.png`}
             title={bunnyColor}
             onClick={() => {
-              setSelectedBunny(bunnyColor);
+              handleClick();
             }}
           />
         </CardActionArea>
       </MUICard>
+      {playerName ? <p>{playerName}</p> : ''}
     </div>
   );
 };

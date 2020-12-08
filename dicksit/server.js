@@ -14,12 +14,23 @@ const deck = mockdata.userCards;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// TODO: These really shouldn't be global variables, but saved in a database
 let code;
 let game;
+
 app.post('/api/gameinfo', (req, res) => {
   game = req.body;
   code = helper.generateCode();
   res.send({ code });
+});
+
+app.post('/api/validatecode', (req, res) => {
+  codeToValidate = req.body.code;
+  if (codeToValidate === code) {
+    res.send({ isValid: true });
+  } else {
+    res.send({ isValid: false });
+  }
 });
 
 app.get('/api/init', (req, res) => {

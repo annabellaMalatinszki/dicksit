@@ -9,8 +9,8 @@ export const getApi = async (dest) => {
   return body;
 };
 
-export const postGameInfo = async (info) => {
-  const response = await fetch('/api/gameinfo', {
+export const postApi = async (dest, info) => {
+  const response = await fetch(`/api/${dest}`, {
     method: 'post',
     headers: {
       // prettier-ignore

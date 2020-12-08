@@ -1,4 +1,4 @@
-export const callApi = async (dest) => {
+export const getApi = async (dest) => {
   const response = await fetch(`/api/${dest}`);
   const body = await response.json();
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserName, setUserColor, setNumOfPlayers } from '../../../actions';
+import { setUserColor, setNumOfPlayers } from '../../../actions';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Slider from '@material-ui/core/Slider';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BunnyArray from '../BunnyArray';
 import BackButton from '../BackButton';
 import { postApi } from '../../../requestHelper';
+import NameField from '../NameField';
 
 // TODO: This should not be here
 const bunnies = [
@@ -28,10 +28,6 @@ const bunnies = [
 ];
 
 const useStyle = makeStyles({
-  nameInput: {
-    width: '15vw',
-    marginBottom: '2vh',
-  },
   slider: {
     width: '15vw',
   },
@@ -65,13 +61,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
   return (
     <div>
       <form>
-        <TextField
-          className={classes.nameInput}
-          label="Name"
-          onChange={(e) => {
-            dispatch(setUserName(e.target.value));
-          }}
-        ></TextField>
+        <NameField />
         <Typography id="num-of-players-slider" gutterBottom>
           Number of players
         </Typography>

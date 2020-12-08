@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BackButton from '../BackButton';
 import TextField from '@material-ui/core/TextField';
+import Alert from '@material-ui/lab/Alert';
 import { postApi } from '../../../requestHelper';
 
 const useStyles = makeStyles({
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
 const PlayerCode = ({ setSignInStatus, setIsValidated }) => {
   const [isValidFormat, setIsValidFormat] = useState(false);
   const [code, setCode] = useState('');
+  const [isWarning, setIsWarning] = useState(false);
 
   const classes = useStyles();
 
@@ -42,7 +44,12 @@ const PlayerCode = ({ setSignInStatus, setIsValidated }) => {
       code,
     })
       .then((res) => {
-        setIsValidated(res.isValid);
+        if (!res.isValid) {
+          setIsWarning(true);
+          setIsValidFormat(false);
+        } else {
+          setIsValidated(res.isValid);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -60,7 +67,13 @@ const PlayerCode = ({ setSignInStatus, setIsValidated }) => {
           }}
         />
       </div>
-
+      {isWarning ? (
+        <div>
+          <Alert severity="error">Invalid code</Alert>
+        </div>
+      ) : (
+        ''
+      )}
       <div className={classes.arrowButtons}>
         <BackButton setSignInStatus={setSignInStatus}></BackButton>
         <Button

@@ -98,7 +98,10 @@ const HostForm = ({ setCode, setSignInStatus }) => {
         </div>
         <div className={classes.arrowButtons}>
           <BackButton setSignInStatus={setSignInStatus} />
-          <Button onClick={handleClick}>
+          <Button
+            onClick={handleClick}
+            disabled={userName === '' ? true : false}
+          >
             <ArrowForwardIcon />
           </Button>
         </div>

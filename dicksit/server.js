@@ -14,9 +14,11 @@ const deck = mockdata.userCards;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let code;
+let game;
 app.post('/api/gameinfo', (req, res) => {
-  const game = req.body;
-  const code = helper.generateCode();
+  game = req.body;
+  code = helper.generateCode();
   res.send({ code });
 });
 

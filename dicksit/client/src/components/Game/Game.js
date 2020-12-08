@@ -4,7 +4,7 @@ import Header from './Header';
 import SideBar from './SideBar';
 import Hand from './Hand';
 import GameArea from './GameArea';
-import { callApi } from '../../requestHelper';
+import { getApi } from '../../requestHelper';
 import { useSelector } from 'react-redux';
 
 const Game = () => {
@@ -15,7 +15,7 @@ const Game = () => {
   const isSignedIn = useSelector((state) => state.isSignedIn);
 
   useEffect(() => {
-    callApi('init')
+    getApi('init')
       .then((res) => {
         setScores(res.scores);
         setUserCards(res.userCards);

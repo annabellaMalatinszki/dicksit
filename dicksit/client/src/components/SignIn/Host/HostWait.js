@@ -8,7 +8,7 @@ import Alert from '@material-ui/lab/Alert';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { makeStyles } from '@material-ui/core/styles';
 import BunnyArray from '../BunnyArray';
-import { callApi } from '../../../requestHelper';
+import { getApi } from '../../../requestHelper';
 
 const useStyles = makeStyles({
   codeText: {
@@ -41,7 +41,7 @@ const HostWait = ({ code }) => {
   }, []);
 
   const checkPlayers = () => {
-    callApi('checkplayers')
+    getApi('checkplayers')
       .then((res) => {
         // TODO: numOfSignedInPlayers should be updated
         // TODO: bunnies should be updated with color and playername

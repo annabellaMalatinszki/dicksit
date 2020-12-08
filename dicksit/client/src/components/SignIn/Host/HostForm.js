@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import BunnyArray from '../BunnyArray';
 import BackButton from '../BackButton';
-import { postGameInfo } from '../../../requestHelper';
+import { postApi } from '../../../requestHelper';
 
 // TODO: This should not be here
 const bunnies = [
@@ -51,7 +51,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
   const classes = useStyle();
 
   const handleClick = ({ setSignInStatus }) => {
-    postGameInfo({
+    postApi('gameinfo', {
       userName,
       numOfPlayers,
       userColor,

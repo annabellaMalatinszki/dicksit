@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // TODO: These really shouldn't be global variables, but saved in a database
 let code;
 let game;
+let players = [];
+let isGameStarted = false;
 
 app.post('/api/gameinfo', (req, res) => {
   game = req.body;
@@ -33,6 +35,13 @@ app.post('/api/validatecode', (req, res) => {
   }
 });
 
+app.post('/api/signinplayer', (req, res) => {
+  playerName = req.body.userName;
+  playerColor = req.body.userColor;
+  players.push({ playerName, playerColor });
+  console.log(players);
+  res.send({ signInSuccess: true });
+});
 app.get('/api/init', (req, res) => {
   // TODO This is not right, the userCards property return the first element of the array, because this here is everyone's hand,
   // and it shouldn't be sent to everyone. Each should get their own hand only.

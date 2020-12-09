@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { signIn } from '../../../actions';
+import { signIn, startGame } from '../../../actions';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -60,15 +60,28 @@ const HostWait = ({ code }) => {
   };
 
   const handleWarningClick = () => {
-    dispatch(signIn());
+    sendStartGame();
   };
 
   const handleForwardClick = () => {
     if (numOfSignedInPlayers < numOfPlayers) {
       setIsWarning(!isWarning);
     } else {
-      dispatch(signIn());
+      sendStartGame();
     }
+  };
+
+  const sendStartGame = () => {
+    getApi('startgame')
+      .then((res) => {
+        if (res.isGameStarted) {
+          dispatch(signIn());
+          dispatch(startGame());
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

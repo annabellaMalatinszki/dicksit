@@ -3,7 +3,7 @@ const userColorReducer = (state = '', action) => {
     case 'SETCOLOR':
       return action.payload;
     default:
-      return 'blue';
+      return state;
   }
 };
 

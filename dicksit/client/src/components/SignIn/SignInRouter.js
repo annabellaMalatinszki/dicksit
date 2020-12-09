@@ -26,16 +26,16 @@ const useStyle = makeStyles({
 });
 
 const SignInRouter = () => {
-  const [signInStatus, setSignInStatus] = useState('signin');
+  const [signInMode, setSignInMode] = useState('signin');
   const classes = useStyle();
 
   let componentToRender;
-  if (signInStatus === 'signin') {
-    componentToRender = <SignIn setSignInStatus={setSignInStatus} />;
-  } else if (signInStatus === 'host') {
-    componentToRender = <HostRouter setSignInStatus={setSignInStatus} />;
-  } else if (signInStatus === 'player') {
-    componentToRender = <PlayerRouter setSignInStatus={setSignInStatus} />;
+  if (signInMode === 'signin') {
+    componentToRender = <SignIn setSignInMode={setSignInMode} />;
+  } else if (signInMode === 'host') {
+    componentToRender = <HostRouter setSignInMode={setSignInMode} />;
+  } else if (signInMode === 'player') {
+    componentToRender = <PlayerRouter setSignInMode={setSignInMode} />;
   }
 
   return (

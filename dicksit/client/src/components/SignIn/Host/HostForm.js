@@ -38,7 +38,7 @@ const useStyle = makeStyles({
   },
 });
 
-const HostForm = ({ setCode, setSignInStatus }) => {
+const HostForm = ({ setCode, setSignInMode }) => {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.userName);
   const userColor = useSelector((state) => state.userColor);
@@ -46,7 +46,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
 
   const classes = useStyle();
 
-  const handleClick = ({ setSignInStatus }) => {
+  const handleClick = () => {
     postApi('gameinfo', {
       userName,
       numOfPlayers,
@@ -87,7 +87,7 @@ const HostForm = ({ setCode, setSignInStatus }) => {
           />
         </div>
         <div className={classes.arrowButtons}>
-          <BackButton setSignInStatus={setSignInStatus} />
+          <BackButton setSignInMode={setSignInMode} />
           <Button
             onClick={handleClick}
             disabled={userName === '' ? true : false}

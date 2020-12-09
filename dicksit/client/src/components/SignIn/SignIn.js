@@ -17,7 +17,7 @@ const useStyle = makeStyles({
   },
 });
 
-const SignIn = ({ setSignInStatus }) => {
+const SignIn = ({ setSignInMode }) => {
   const classes = useStyle();
 
   return (
@@ -27,7 +27,7 @@ const SignIn = ({ setSignInStatus }) => {
         variant="contained"
         size="large"
         onClick={() => {
-          setSignInStatus('host');
+          setSignInMode('host');
         }}
       >
         <Typography variant="h6">Host</Typography>
@@ -37,7 +37,7 @@ const SignIn = ({ setSignInStatus }) => {
         variant="contained"
         size="large"
         onClick={() => {
-          setSignInStatus('player');
+          setSignInMode('player');
         }}
       >
         <Typography variant="h6">Join</Typography>

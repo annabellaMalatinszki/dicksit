@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Game from './components/Game/Game';
+import GameRouter from './components/Game/GameRouter';
 import SignInRouter from './components/SignIn/SignInRouter';
 
 const App = () => {
   const isSignedIn = useSelector((state) => state.isSignedIn);
+  const isGameStarted = useSelector((state) => state.isGameStarted);
 
   return (
     <div className="App">
@@ -13,7 +14,7 @@ const App = () => {
         <Route exact path="/">
           {isSignedIn ? <Redirect to="/game" /> : <SignInRouter />}
         </Route>
-        <Route path="/game" component={Game} />
+        <Route path="/game" component={GameRouter} />
       </div>
     </div>
   );

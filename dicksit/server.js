@@ -42,6 +42,10 @@ app.post('/api/signinplayer', (req, res) => {
   console.log(players);
   res.send({ signInSuccess: true });
 });
+app.get('/api/startgame', (req, res) => {
+  isGameStarted = true;
+  res.send({ isGameStarted });
+});
 app.get('/api/init', (req, res) => {
   // TODO This is not right, the userCards property return the first element of the array, because this here is everyone's hand,
   // and it shouldn't be sent to everyone. Each should get their own hand only.

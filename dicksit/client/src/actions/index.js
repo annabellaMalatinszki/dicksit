@@ -24,3 +24,9 @@ export const setNumOfPlayers = (numOfPlayers) => {
     payload: numOfPlayers,
   };
 };
+
+export const startGame = () => {
+  return {
+    type: 'GAME_STARTED',
+  };
+};

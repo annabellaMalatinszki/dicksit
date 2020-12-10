@@ -1,6 +1,6 @@
 import React from 'react';
 import useInterval from '../../hooks/useInterval';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
@@ -16,10 +16,6 @@ const useStyles = makeStyles({
 
 const PlayerWait = () => {
   const dispatch = useDispatch();
-  const isGameStarted = useSelector((state) => {
-    state.isGameStarted;
-  });
-
   const classes = useStyles();
 
   useInterval(async () => {

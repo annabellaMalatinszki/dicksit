@@ -47,6 +47,10 @@ const HostForm = ({ setCode, setSignInMode }) => {
   const classes = useStyle();
 
   const handleClick = () => {
+    if (userColor === '') {
+      dispatch(setUserColor('blue'));
+    }
+
     postApi('gameinfo', {
       userName,
       numOfPlayers,

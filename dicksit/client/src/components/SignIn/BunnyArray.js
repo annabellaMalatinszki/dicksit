@@ -24,11 +24,12 @@ const BunnyArray = ({ bunnies, selectedBunny, setSelectedBunny, isWait }) => {
           <Bunny
             bunnyColor={bunny.color}
             playerName={bunny.name}
-            key={bunny.color}
+            key={bunny.id}
             className={classes.bunny}
             setSelectedBunny={setSelectedBunny}
             isSelected={selectedBunny === bunny.color ? true : false}
             isWait={isWait}
+            isTaken={bunny.isTaken}
           />
         );
       })}

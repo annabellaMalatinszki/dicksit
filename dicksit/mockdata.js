@@ -2,20 +2,20 @@ exports.scores = [
   {
     name: 'Bella',
     points: 10,
-    key: 'Bella'
+    key: 'Bella',
   },
   {
     name: 'Márk',
     points: 4,
-    key: 'Márk'
+    key: 'Márk',
   },
   {
     name: 'Balázs',
     points: 3,
-    key: 'Balázs'
+    key: 'Balázs',
   },
 ];
-  
+
 exports.userCards = [
   { id: '1.png' },
   { id: '2.png' },
@@ -162,9 +162,9 @@ exports.userCards = [
   { id: '143.png' },
   { id: '144.png' },
   { id: '145.png' },
-  { id: '146.png' }
+  { id: '146.png' },
 ];
-  
+
 exports.gameAreaCards = [
   { id: '7.png' },
   { id: '8.png' },

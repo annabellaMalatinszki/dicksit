@@ -59,4 +59,11 @@ app.get('/api/init', (req, res) => {
   });
 });
 
+app.get('/api/clear', (req, res) => {
+  players = [];
+  numOfPlayers = 0;
+  isGameStarted = false;
+  console.log('cleared');
+  res.send({ cleared: true });
+});
 app.listen(port, () => console.log(`Listening on port ${port}`));

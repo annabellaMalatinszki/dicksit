@@ -33,17 +33,20 @@ const Bunny = ({
   setSelectedBunny,
   playerName,
   isWait,
+  isTaken,
 }) => {
   const classes = useStyle();
 
   const handleClick = () => {
-    if (!isWait) setSelectedBunny(bunnyColor);
+    if (!isWait && !isTaken) setSelectedBunny(bunnyColor);
   };
 
   return (
     <div className={isWait ? classes.root : ''}>
       <MUICard
-        className={`${classes.bunny} ${isSelected ? classes.selected : null}`}
+        className={`${classes.bunny} ${isSelected ? classes.selected : null} ${
+          isTaken ? classes.taken : classes.free
+        }`}
       >
         <CardActionArea>
           <CardMedia

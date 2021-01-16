@@ -60,6 +60,16 @@ app.post('/api/signinplayer', (req, res) => {
     res.send({ signInSucces: false, error: 'tooManyPlayers' });
   }
 });
+
+app.get('/api/checkplayers', (req, res) => {
+  let bunnies = [...players];
+  let numOfSignedInPlayers = players.length;
+
+  for (let i = 0; i < numOfPlayers - numOfSignedInPlayers; i++) {
+    bunnies.push({ name: '', color: 'blank', id: i });
+  }
+
+  res.send({ players: bunnies, numOfSignedInPlayers });
 });
 app.get('/api/startgame', (req, res) => {
   isGameStarted = true;

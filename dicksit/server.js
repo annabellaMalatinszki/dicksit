@@ -43,11 +43,23 @@ app.post('/api/validatecode', (req, res) => {
 });
 
 app.post('/api/signinplayer', (req, res) => {
-  playerName = req.body.userName;
-  playerColor = req.body.userColor;
-  players.push({ playerName, playerColor });
+  if (players.length + 1 <= numOfPlayers) {
+    const name = req.body.userName;
+    const color = req.body.userColor;
+    const isValid = playerHandler.validatePlayer(name, color, players);
+    if (isValid) {
+      players.push({ name, color, id: name, isHost: false });
+      res.send({ signInSuccess: true, error: '' });
+      //TODO: Delete this:
   console.log(players);
-  res.send({ signInSuccess: true });
+    } else {
+      res.send({ signInSuccess: false,  error: ''});
+    }
+  } else {
+    // TODO: Find out how to give feedback of what the problem is (taken name/taken color/too many players)
+    res.send({ signInSucces: false, error: 'tooManyPlayers' });
+  }
+});
 });
 app.get('/api/startgame', (req, res) => {
   isGameStarted = true;

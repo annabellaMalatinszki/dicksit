@@ -9,6 +9,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { makeStyles } from '@material-ui/core/styles';
 import BunnyArray from '../BunnyArray';
 import { getApi } from '../../../requestHelper';
+import useInterval from '../../../hooks/useInterval';
 
 const useStyles = makeStyles({
   codeText: {
@@ -32,25 +33,13 @@ const HostWait = ({ code }) => {
   const [numOfSignedInPlayers, setNumOfSignedInPlayers] = useState(1);
   const [bunnies, setBunnies] = useState([]);
 
-  useEffect(() => {
-    const bunnyArray = [{ color: userColor, name: userName }];
-    for (let i = 0; i < numOfPlayers - 1; i++) {
-      bunnyArray.push({ color: 'blank', name: '' });
+  useInterval(async () => {
+    if (numOfSignedInPlayers < numOfPlayers) {
+      const res = await getApi('checkplayers');
+      setBunnies(res.players);
+      setNumOfSignedInPlayers(res.numOfSignedInPlayers);
     }
-    setBunnies(bunnyArray);
-  }, []);
-
-  const checkPlayers = () => {
-    getApi('checkplayers')
-      .then((res) => {
-        // TODO: numOfSignedInPlayers should be updated
-        // TODO: bunnies should be updated with color and playername
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  }, 1000);
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(code);
@@ -64,7 +53,7 @@ const HostWait = ({ code }) => {
   };
 
   const handleForwardClick = () => {
-    if (numOfSignedInPlayers < numOfPlayers) {
+    if (numOfSignedInPlayers !== numOfPlayers) {
       setIsWarning(!isWarning);
     } else {
       sendStartGame();

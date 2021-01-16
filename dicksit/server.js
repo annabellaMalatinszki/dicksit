@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mockdata = require('./mockdata.js');
 const cardHandler = require('./cardHandler.js');
 const playerHandler = require('./playerHandler');
+const colorHandler = require('./colorHandler');
 const helper = require('./util.js');
 
 const app = express();
@@ -29,7 +30,7 @@ app.post('/api/gameinfo', (req, res) => {
 
   if (isValid) {
     players.push({ name, color, isHost: true }), (code = helper.generateCode());
-  res.send({ code });
+    res.send({ code });
   }
 });
 
@@ -51,7 +52,7 @@ app.post('/api/signinplayer', (req, res) => {
       players.push({ name, color, id: name, isHost: false });
       res.send({ signInSuccess: true, error: '' });
       //TODO: Delete this:
-  console.log(players);
+      console.log(players);
     } else {
       res.send({ signInSuccess: false,  error: ''});
     }
@@ -71,13 +72,22 @@ app.get('/api/checkplayers', (req, res) => {
 
   res.send({ players: bunnies, numOfSignedInPlayers });
 });
+
+app.get('/api/checkcolors', (req, res) => {
+  const colors = colorHandler.filterTakenColors(players);
+  res.send({ colors });
+});
+
 app.get('/api/startgame', (req, res) => {
+  // TODO: check who the request is coming from and if that person is the host.
   isGameStarted = true;
   res.send({ isGameStarted });
 });
+
 app.get('/api/isgamestarted', (req, res) => {
   res.send({ isGameStarted });
 });
+
 app.get('/api/init', (req, res) => {
   // TODO This is not right, the userCards property return the first element of the array, because this here is everyone's hand,
   // and it shouldn't be sent to everyone. Each should get their own hand only.
@@ -95,4 +105,5 @@ app.get('/api/clear', (req, res) => {
   console.log('cleared');
   res.send({ cleared: true });
 });
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

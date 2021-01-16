@@ -54,7 +54,7 @@ const HostForm = ({ setCode, setSignInMode }) => {
     postApi('gameinfo', {
       userName,
       numOfPlayers,
-      userColor,
+      userColor: userColor === '' ? 'blue' : userColor,
     })
       .then((res) => {
         setCode(res.code);

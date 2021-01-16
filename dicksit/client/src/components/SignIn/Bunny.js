@@ -15,6 +15,8 @@ const useStyle = makeStyles({
     transition: 'all .25s linear',
     boxShadow: 'none',
     padding: '2px',
+  },
+  free: {
     '&:hover': {
       backgroundColor: 'rgba(210, 215, 211, 1)',
     },
@@ -24,6 +26,9 @@ const useStyle = makeStyles({
     borderColor: 'rgba(63,81,181,0.5)',
     borderWidth: '2px',
     backgroundColor: 'rgba(179, 188, 185, 1)',
+  },
+  taken: {
+    opacity: '0.3',
   },
 });
 

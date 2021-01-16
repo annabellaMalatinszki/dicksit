@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mockdata = require('./mockdata.js');
 const cardHandler = require('./cardHandler.js');
+const playerHandler = require('./playerHandler');
 const helper = require('./util.js');
 
 const app = express();
@@ -16,14 +17,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // TODO: These really shouldn't be global variables, but saved in a database
 let code;
-let game;
+let numOfPlayers;
 let players = [];
 let isGameStarted = false;
 
 app.post('/api/gameinfo', (req, res) => {
-  game = req.body;
-  code = helper.generateCode();
+  const name = req.body.userName;
+  const color = req.body.userColor;
+  numOfPlayers = req.body.numOfPlayers;
+  const isValid = playerHandler.validatePlayer(name, color, players);
+
+  if (isValid) {
+    players.push({ name, color, isHost: true }), (code = helper.generateCode());
   res.send({ code });
+  }
 });
 
 app.post('/api/validatecode', (req, res) => {
